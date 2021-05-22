@@ -2,7 +2,7 @@ package practice.springboot.demo.db;
 
 import java.util.ArrayList;
 
-public class DBManager {
+public class DBManager {    
 
     private static ArrayList<Cars> cars = new ArrayList<>();
 

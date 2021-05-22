@@ -7,18 +7,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/}" th:text="#{navbar.home}"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/about}">About</a>
+                    <a class="nav-link" th:href="@{/about}" th:text="#{navbar.about}"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/addcar}">Add Car</a>
+                    <a class="nav-link" th:href="@{/addcar}" th:text="#{label.addCar}"></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{currentLang}">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{'?lng=ru'}">РУС</a></li>
+                        <li><a class="dropdown-item" th:href="@{'?lng=en'}">ENG</a></li>
+                    </ul>
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <input class="form-control me-2" type="search" th:placeholder="#{label.search}" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit" th:text="#{label.search}"></button>
             </form>
         </div>
     </div>
