@@ -4,7 +4,7 @@
     <div class="col-12" layout:fragment="content_view">
         <form th:action="@{/savecar}" method="post">
             <div class="mb-3">
-                <label th:text="#{label.name}""></label>
+                <label th:text="#{label.name}"></label>
                 <input type="text" class="form-control" name="name" th:value="${car!=null?car.name:''}">
             </div>
             <div class="mb-3">
