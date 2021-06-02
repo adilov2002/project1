@@ -8,7 +8,7 @@
                 <td width="5%">ID</td>
                 <td width="40%" th:text="#{label.name}"></td>
                 <td th:text="#{label.model}"></td>
-                <td th:text="#{label.speed}"></td>
+                <td th:text="#{label.price}"></td>
                 <td width="20%" th:text="#{label.details}"></td>
             </tr>
             </thead>
@@ -17,7 +17,7 @@
                 <td th:text="${mashina.id}"></td>
                 <td th:text="${mashina.name}"></td>
                 <td th:text="${mashina.model}"></td>
-                <td th:text="${mashina.speed}"></td>
+                <td th:text="${mashina.price}"></td>
                 <td>
                     <a th:href="@{'/details/'+${mashina.id}}" class="btn btn-info btn-sm" th:text="#{label.details}"></a>
                 </td>

@@ -1,23 +1,27 @@
 package practice.springboot.demo.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import practice.springboot.demo.db.Cars;
-import practice.springboot.demo.db.DBManager;
+import practice.springboot.demo.entities.Cars;
+import practice.springboot.demo.services.CarsService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HomeController {
 
+    @Autowired
+    private CarsService carsService;
 
     @GetMapping(value = "/")
     public String index(Model model){
-        ArrayList<Cars> cars = DBManager.getAllCars();
+        List<Cars> cars = carsService.listCars();
         model.addAttribute("cars", cars);
         return "index";
     }
@@ -35,14 +39,33 @@ public class HomeController {
     @PostMapping(value = "/addcar")
     public String toAddCar(@RequestParam(name = "name") String name,
                            @RequestParam(name = "model") String model,
-                           @RequestParam(name = "speed") int speed){
-        DBManager.addCar(new Cars(null, name, model, speed));
+                           @RequestParam(name = "price") int price){
+        carsService.addCar(new Cars(null, name, model, price));
         return "redirect:/addcar?success";
+    }
+
+    @PostMapping(value = "/savecar")
+    public String toSaveCar(@RequestParam(name = "id") Long id,
+                           @RequestParam(name = "name") String name,
+                           @RequestParam(name = "model") String model,
+                           @RequestParam(name = "price") int price){
+        Cars car = carsService.getCar(id);
+
+        if(car!=null){
+            car.setName(name);
+            car.setModel(model);
+            car.setPrice(price);
+
+            carsService.saveCar(car);
+            //return "redirect:/details/"+id;
+            return "redirect:/";
+        }
+        return "redirect:/";
     }
 
     @GetMapping(value = "/details/{carId}")
     public String details(@PathVariable(name = "carId") Long id, Model model){
-        Cars car = DBManager.getCar(id);
+        Cars car = carsService.getCar(id);
         model.addAttribute("car", car);
         return "details";
     }

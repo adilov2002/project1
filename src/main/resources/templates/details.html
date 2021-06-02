@@ -4,6 +4,7 @@
     <div class="col-12" layout:fragment="content_view">
         <form th:action="@{/savecar}" method="post">
             <div class="mb-3">
+                <input type="hidden" name="id" th:value="${car.id}">
                 <label th:text="#{label.name}"></label>
                 <input type="text" class="form-control" name="name" th:value="${car!=null?car.name:''}">
             </div>
@@ -12,8 +13,8 @@
                 <input type="text" class="form-control" name="model" th:value="${car!=null?car.model:''}">
             </div>
             <div class="mb-3">
-                <label th:text="#{label.speed}"></label>
-                <input type="number" class="form-control" name="speed" th:value="${car!=null?car.speed:0}">
+                <label th:text="#{label.price}"></label>
+                <input type="number" class="form-control" name="price" th:value="${car!=null?car.price:0}">
             </div>
             <div class="mb-3">
                 <button class="btn btn-success" th:text="#{label.saveCar}"></button>
