@@ -11,6 +11,7 @@ public interface CarsService {
     void deleteCar(Cars car); // deleting
     List<Cars> listCars(); // list all cars
     Cars getCar(Long id); // get one car
+    List<Cars> searchCars(String name); // searching List of Cars with name like
 
 
 }

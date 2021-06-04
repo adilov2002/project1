@@ -38,4 +38,9 @@ public class CarsServiceImpl implements CarsService {
     public Cars getCar(Long id) {
         return carsRepository.getOne(id);
     }
+
+    @Override
+    public List<Cars> searchCars(String name) {
+        return carsRepository.findAllByNameLikeAndPriceGreaterThanEqualOrderByPriceDesc(name, 0);
+    }
 }

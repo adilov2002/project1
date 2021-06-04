@@ -79,4 +79,12 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping(value = "/searchcar")
+    public String searchCar(@RequestParam(name = "key") String key, Model model){
+        List<Cars> cars = carsService.searchCars(key);
+        model.addAttribute("cars", cars);
+        model.addAttribute("key", key);
+        return "index";
+    }
+
 }
