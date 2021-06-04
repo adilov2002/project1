@@ -70,4 +70,13 @@ public class HomeController {
         return "details";
     }
 
+    @PostMapping(value = "/deletecar")
+    public String deleteCar(@RequestParam(name = "id") Long id){
+        Cars car = carsService.getCar(id);
+        if (car != null){
+            carsService.deleteCar(car);
+        }
+        return "redirect:/";
+    }
+
 }

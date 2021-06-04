@@ -18,8 +18,28 @@
             </div>
             <div class="mb-3">
                 <button class="btn btn-success" th:text="#{label.saveCar}"></button>
-                <button class="btn btn-danger float-end" th:text="#{label.deleteCar}"></button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#deleteCar" th:text="#{label.deleteCar}"></button>
             </div>
         </form>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteCar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form th:action="@{'/deletecar'}" method="post">
+                        <input type="hidden" name="id" th:value="${car.id}">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" th:text="#{label.deleteCar}"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" th:text="#{label.sure}"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{label.no}"></button>
+                            <button type="submit" class="btn btn-danger" th:text="#{label.yes}"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </html>
