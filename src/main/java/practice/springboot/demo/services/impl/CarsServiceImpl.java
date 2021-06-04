@@ -41,6 +41,6 @@ public class CarsServiceImpl implements CarsService {
 
     @Override
     public List<Cars> searchCars(String name) {
-        return carsRepository.findAllByNameLikeAndPriceGreaterThanEqualOrderByPriceDesc(name, 0);
+        return carsRepository.findAllByNameLikeAndPriceGreaterThanEqualOrderByPriceDesc("%"+name+"%", 0);
     }
 }

@@ -25,7 +25,7 @@
                 </li>
             </ul>
             <form class="d-flex" th:action="@{'/searchcar'}" method="get">
-                <input class="form-control me-2" type="search" th:placeholder="#{label.search}" aria-label="Search" name="key">
+                <input class="form-control me-2" type="search" th:placeholder="#{label.search}" aria-label="Search" name="key" th:value="${key!=null?key:''}">
                 <button class="btn btn-outline-light" type="submit" th:text="#{label.search}"></button>
             </form>
         </div>
